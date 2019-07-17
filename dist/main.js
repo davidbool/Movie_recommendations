@@ -1,10 +1,11 @@
 const movieManager = new MovieManager
 const renderer = new Renderer
-
+let x=-1
 const loadPage = async function () {
+    x++
     await movieManager.getTrending()
     const r = movieManager.trendingMovies
-    await renderer.renderTrending(r.slice(0, 3))
+    await renderer.renderTrending(r.slice(x, x+3))
 }
 
 loadPage()
@@ -40,6 +41,7 @@ $('body').on('click', '.like', async function () {
     console.log(l)
     console.log("main")
     renderer.renderSuggestion(l.slice(0, 3))
+    loadPage()
 })
 
 $('body').on('click', '.dislike', async function () {

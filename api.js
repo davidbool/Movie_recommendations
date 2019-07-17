@@ -64,29 +64,8 @@ router.put('/user/:username', function (req, res) {
         
         User.findOne({ name: user }, function (err, d) {
             let list = sort(movies.results, d.recommendedMovies)
-            let newlist=[]
-           if(d.recommendedMovies[0]===undefined){
-               d.recommendedMovies=list
-               res.send(list) 
-            }
-           else{
-               for (let i of list){
-                   for (let t of d.recommendedMovies){
-                       if(i.title!==t.title){
-                           newlist.push(i)
-                           d.recommendedMovies=newlist
-                           res.send(newlist)
-                           
-                        }
-                   }
-               }
-           
-            
-            }
-            
-           
-        })
-    })
+         
+ 
 
 })
 
