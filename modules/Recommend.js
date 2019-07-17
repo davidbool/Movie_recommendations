@@ -3,8 +3,20 @@ const RecommendList = function (list1, list2) {
     let i = 0
     let k = 0
     let numlst = []
+   
+    for(let i of list1){
+        let count = 0
+        console.log(i.title)
+        for( let m of list2){
+            console.log(m.title) 
+            if(i.title == m.title){
+                list2.splice(count,1)
+            }
+            count ++
+        }
+    }
     while (i < list1.length || k < list2.length) {
-        if (list2[0] == undefined) {
+        if (list2[k] == undefined) {
             list1[i].score = Math.round(list1[i].vote_average)
             reclist.push(list1[i])
             numlst.push(list1[i].score)
@@ -18,22 +30,14 @@ const RecommendList = function (list1, list2) {
             else{
                 list1[i].score = Math.round(list1[i].vote_average)
                 list2[k].score = Math.round(list2[k].vote_average)
-    
-                if (list1[i].original_title == list2[k].original_title) {
-                    list1[i].score++
-                    reclist.push(list1[i])
-                    numlst.push(list1[i].score)
-                    
-                }
-    
-                else {
+
                     reclist.push(list1[i])
                     reclist.push(list2[k])
                     numlst.push(list1[i].score)
                     numlst.push(list2[k].score)
                 }
             }
-        }
+        
 
 
         i++

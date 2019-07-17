@@ -5,7 +5,9 @@ const loadPage = async function () {
     x++
     await movieManager.getTrending()
     const r = movieManager.trendingMovies
-    await renderer.renderTrending(r.slice(x, x+3))
+
+    await renderer.renderTrending(r.slice(0, 6))
+
 }
 
 loadPage()

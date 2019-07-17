@@ -55,19 +55,54 @@ router.post('/user/:username', function (req, res) {
 router.put('/user/:username', function (req, res) {
     const user = req.params.username
     const moviedata = req.body
+    User.findOne({ name: user }, function (err, x) {
+        if (x.movies[0] == undefined) {
+            x.movies.push(moviedata)
+            x.save()
+        }
+        else {
+            let checkin = true
+            for (movie of x.movies) {
+                if (movie.name == moviedata.name) {
+                    checkin = false
+                    break
+                }
+            }
+            if (checkin) {
+                x.movies.push(moviedata)
+                x.save()
+            }
 
-    User.findOneAndUpdate({ name: user }, { $push: { movies: moviedata } }, { new: true }, function (err, x) {
-
+        }
     })
     request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
-        const movies = JSON.parse(body)
-        
+        const movies = JSON.parse(body).results
         User.findOne({ name: user }, function (err, d) {
-            let list = sort(movies.results, d.recommendedMovies)
-         
+
+            let list = sort(movies, d.recommendedMovies)
+            if (d.movies[0] != undefined) {
+                let i = 0
+                while (i < list.length) {
+                    for (let m of d.movies) {
+                        if (m.name == list[i].title) {
+                            list.splice(i, 1)
+                        }
+                    }
+                    i++
+                }
+                d.recommendedMovies = list
+                d.save(function (err) {
+                    console.log(err)
+                })
+            }
+            res.send(list)
+        })
         
+    })
 
 })
+
+
 
 //fillter only liked movie
 router.get('/user/:username', function (req, res) {
@@ -78,9 +113,9 @@ router.get('/user/:username', function (req, res) {
     })
 })
 
-router.get('/topmovies',function(req,res){
-    request(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,function(err,r,body){
-        const data=JSON.parse(body)
+router.get('/topmovies', function (req, res) {
+    request(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
+        const data = JSON.parse(body)
         res.send(data.results)
     })
 })
