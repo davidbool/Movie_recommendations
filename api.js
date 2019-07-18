@@ -79,7 +79,6 @@ router.put('/user/:username', function (req, res) {
         const movies = JSON.parse(body).results
         User.findOne({ name: user }, function (err, d) {
             let list = sort(movies, d.recommendedMovies)
-            if (d.movies[0] != undefined) {
                 let i = 0
                 while (i < list.length) {
                     for (let m of d.movies) {
@@ -89,11 +88,13 @@ router.put('/user/:username', function (req, res) {
                     }
                     i++
                 }
+                
                 d.recommendedMovies = list
+                d.markModified(`recommendedMovies`)
                 d.save(function (err) {
-                    console.log(err + "there was an err")
+                    // console.log(err)
                 })
-            }
+            
             res.send(list)
         })
         //             }
