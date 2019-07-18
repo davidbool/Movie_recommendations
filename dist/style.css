@@ -3,6 +3,9 @@ body {
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     overflow: scroll;
 }
+.movieName{
+    color:white;
+}
 
 #trendingContainer {
     display: grid;
@@ -54,10 +57,12 @@ h1 {
 
 .user {
     margin-left: 1213px;
+    color:white;
 }
 
 .password {
     margin-left: 1213px;
+    color:white;
 }
 
 .login {
