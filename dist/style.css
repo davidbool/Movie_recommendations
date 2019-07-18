@@ -55,18 +55,31 @@ h1 {
     font-size: 80px;
 }
 
+
+
+#loginBox{
+    margin-top: 0.5px;
+}
+
 .user {
+    
     margin-left: 1213px;
+
     color:white;
+
 }
 
 .password {
+    
     margin-left: 1213px;
+
     color:white;
+
 }
 
 .login {
     margin-left: 1305px;
+
 }
 
 .image {
@@ -219,4 +232,14 @@ h1 {
     to {
         transform: translateY(-2000px);
     }
+}
+
+.trendingHeader{
+    color: #f5f6fa;
+    font-family: 'Indie Flower', cursive;
+    margin-left: 300px;
+    margin-top: 50px;
+    font-size: 70px;
+    
+    
 }
