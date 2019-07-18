@@ -1,10 +1,13 @@
 const movieManager = new MovieManager
 const renderer = new Renderer
-
+let x=-1
 const loadPage = async function () {
+    x++
     await movieManager.getTrending()
     const r = movieManager.trendingMovies
+
     await renderer.renderTrending(r.slice(0, 6))
+
 }
 
 loadPage()
@@ -40,6 +43,7 @@ $('body').on('click', '.like', async function () {
     console.log(l)
     console.log("main")
     renderer.renderSuggestion(l.slice(0, 3))
+    loadPage()
 })
 
 $('body').on('click', '.dislike', async function () {
@@ -59,4 +63,11 @@ $('body').on('click','.list',async function(){
     const login = $('.user').val()
    let m=await movieManager.showlikedmovies(login)
     renderer.renderSuggestion(movieManager.favoraitemovies)
+})
+
+$('body').on('click','.top',async function(){
+    $('.searchMovie').empty()
+    movieManager.topmovies.splice(0,movieManager.topmovies.length)
+    await movieManager.TopMovies()
+    renderer.renderTrending(movieManager.topmovies)
 })

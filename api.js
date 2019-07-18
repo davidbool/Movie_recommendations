@@ -78,6 +78,7 @@ router.put('/user/:username', function (req, res) {
     request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
         const movies = JSON.parse(body).results
         User.findOne({ name: user }, function (err, d) {
+
             let list = sort(movies, d.recommendedMovies)
             if (d.movies[0] != undefined) {
                 let i = 0
@@ -96,11 +97,12 @@ router.put('/user/:username', function (req, res) {
             }
             res.send(list)
         })
-        //             }
+        
     })
+
 })
 
-// })
+
 
 //fillter only liked movie
 router.get('/user/:username', function (req, res) {
