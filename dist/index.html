@@ -13,26 +13,32 @@
 </head>
 
 <body>
-    
+
     <h1>LiveKan</h1>
     <div id='stars'></div>
     <div id='stars2'></div>
     <div id='stars3'></div>
-    
+
     <div id="home">
         <p class="enter">Enter a movie name:</p>
         <input class="movieName" type="text" placeholder="Movie name">
         <button class="search">Search</button>
         <button class='list'>Favorites</button>
         <button class='top'>top movies</button>
-        <input class="user" type="text" placeholder="Username">
         <br><br>
-        <input class="password" type="password" placeholder="Password">
-        <br>
-        <button class="login">Login</button>
+        <div id= "loginBox">
+                <input class="user" type="text" placeholder="Username">
+                <br><br>
+                <input class="password" type="password" placeholder="Password">
+                <br>
+                <button class="login">Login</button>
+            </div>
+        <h2 class= "trendingHeader">Trending</h2>
+        
     </div>
+    
     <script id='template' type='text/x-handlebars-template'>
-            {{#each data}}
+        {{#each data}}
             <div class= 'searchMovie'>
                 <p class= "movieId">{{id}}</p>
                 <h2 class='name'>{{name}}</h2>
@@ -49,7 +55,7 @@
              </script>
     <script id='templateseg' type='text/x-handlebars-template'>
                 {{#each data}}
-                <div class= 'searchMovie'>
+              <div class= 'searchMovie'>
                     <p class= "movieId">{{id}}</p>
                     <h2 class='name'>{{name}}</h2>
                     <img class="image" src="{{img}}">
@@ -68,7 +74,7 @@
     <div id="suggestionContainer"></div>
 
 
-    
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
