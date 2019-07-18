@@ -35,10 +35,7 @@ $('body').on('click', '.like', async function () {
     let like = true
     const id = $(this).siblings('.movieId').text()
     let l = await movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like, year: year, description: description} ,login)
-    console.log(l)
     l = movieManager.cutMovies(l)
-    console.log(l)
-    console.log("main")
     renderer.renderSuggestion(l.slice(0, 3))
 })
 

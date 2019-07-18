@@ -91,7 +91,7 @@ router.put('/user/:username', function (req, res) {
                 }
                 d.recommendedMovies = list
                 d.save(function (err) {
-                    console.log(err)
+                    console.log(err + "there was an err")
                 })
             }
             res.send(list)
