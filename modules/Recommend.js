@@ -6,9 +6,9 @@ const RecommendList = function (list1, list2) {
    
     for(let i of list1){
         let count = 0
-        console.log(i.title)
+     //   console.log(i.title)
         for( let m of list2){
-            console.log(m.title) 
+         //   console.log(m.title) 
             if(i.title == m.title){
                 list2.splice(count,1)
             }
