@@ -138,6 +138,11 @@ h1 {
     padding: 16px 32px;
     border-radius: 5%;
 }
+.kan{
+    width :100px;
+    height :100px;
+    border-radius:50%;
+}
 
 .description {
     background-color: #7f8fa6;
@@ -145,7 +150,8 @@ h1 {
     text-shadow: 1px 1px black;
     width: 250px;
     height: 350px;
-    border-radius: 5%;
+    border-radius: 2%;
+    overflow: auto;
 }
 
 .enter {
