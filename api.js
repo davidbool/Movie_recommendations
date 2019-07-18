@@ -10,7 +10,6 @@ const key = 'f879f4132d8f332d5be23dee1d085d9f'
 const namekey = 'b6c343c7'
 
 
-//מקבל סרטים מה-api
 router.get('/movies', function (req, res) {
     request(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`, function (err, r, body) {
         const data = JSON.parse(body)
@@ -80,7 +79,6 @@ router.put('/user/:username', function (req, res) {
         User.findOne({ name: user }, function (err, d) {
 
             let list = sort(movies, d.recommendedMovies)
-            if (d.movies[0] != undefined) {
                 let i = 0
                 while (i < list.length) {
                     for (let m of d.movies) {
@@ -90,11 +88,13 @@ router.put('/user/:username', function (req, res) {
                     }
                     i++
                 }
+                
                 d.recommendedMovies = list
+                d.markModified(`recommendedMovies`)
                 d.save(function (err) {
-                    console.log(err)
+                    // console.log(err)
                 })
-            }
+            
             res.send(list)
         })
         
