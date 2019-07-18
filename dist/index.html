@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barriecito|Courgette|Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>LiveKan</title>
 </head>
 
@@ -20,23 +22,22 @@
     <div id='stars3'></div>
 
     <div id="home">
-        <p class="enter">Enter a movie name:</p>
-        <input class="movieName" type="text" placeholder="Movie name">
-        <button class="search">Search</button>
-        <button class='list'>Favorites</button>
-        <button class='top'>top movies</button>
+
+            <div class="row">
+        <input class="user col s3 offset-s10" type="text" placeholder="Username">
         <br><br>
-        <div id= "loginBox">
-                <input class="user" type="text" placeholder="Username">
-                <br><br>
-                <input class="password" type="password" placeholder="Password">
-                <br>
-                <button class="login">Login</button>
-            </div>
-        <h2 class= "trendingHeader">Trending</h2>
-        
+        <input class="password col s3 offset-s10" type="password" placeholder="Password">
+        <br>
+        <button class="login col s1 offset-s10">Login</button>
     </div>
-    
+</div>
+    <p class="enter">Enter a movie name:</p>
+    <input class="movieName" type="text" placeholder="Movie name">
+    <button class="search">Search</button>
+    <button class='list'>Favorites</button>
+    <button class='top'>top movies</button>
+
+
     <script id='template' type='text/x-handlebars-template'>
         {{#each data}}
             <div class= 'searchMovie'>
@@ -64,14 +65,18 @@
                         <p class= "description">{{description}}</p>
                         </div>
                     <br><br>
-                    <button class= 'like'>Like</button>
-                    <button class= 'dislike'>Dislike</button>
+                    <button id="scale-demo" href="#!"  class= 'like btn-floating btn-large scale-transition'>Like</button>
+                    <button id="scale-demo" href="#!"  class= 'dislike btn-floating btn-large scale-transition scale-out'>Dislike</button>
                 </div>
                 {{/each}}
                  </script>
 
-    <div id="trendingContainer"></div>
-    <div id="suggestionContainer"></div>
+    <div id="trendingContainer">
+        
+    </div>
+    <div id="suggestionContainer">
+        
+    </div>
 
 
 
