@@ -3,6 +3,7 @@ class MovieManager {
         this.trendingMovies = []
         this.movieData = []
         this.favoraitemovies=[]
+        this.topmovies=[]
 
     }
 
@@ -81,6 +82,12 @@ class MovieManager {
         })
        a.forEach(x =>  this.favoraitemovies.push(x))
         
+    }
+    async TopMovies(){
+        let a=await $.get('http://localhost:3000/topmovies',function(res){
+            return res
+        })
+        a.forEach(x => this.topmovies.push({ name: x.title, img: `https://image.tmdb.org/t/p/w300${x.poster_path}`, id: x.id , description: x.overview, year: x.release_date}))
     }
 
 
