@@ -64,3 +64,10 @@ $('body').on('click','.list',async function(){
    let m=await movieManager.showlikedmovies(login)
     renderer.renderSuggestion(movieManager.favoraitemovies)
 })
+
+$('body').on('click','.top',async function(){
+    $('.searchMovie').empty()
+    movieManager.topmovies.splice(0,movieManager.topmovies.length)
+    await movieManager.TopMovies()
+    renderer.renderTrending(movieManager.topmovies)
+})
