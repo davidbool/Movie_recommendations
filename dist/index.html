@@ -36,8 +36,10 @@
     <button class="search">Search</button>
     <button class='list'>Favorites</button>
     <button class='top'>top movies</button>
-
-
+    <div class="row">
+        <h2 class="enter col s3">Trending</h2>
+        <h2  class="enter col s3 offset-s8">Suggestions</h2>
+</div>
     <script id='template' type='text/x-handlebars-template'>
         {{#each data}}
             <div class= 'searchMovie'>
@@ -49,14 +51,14 @@
                         <p class= "description">{{description}}</p>
                         </div> 
                         <br><br>
-                <button class= 'like'>Like</button>
-                <button class= 'dislike'>Dislike</button>
+                <button id="scale-demo" href="#!"  class= 'like btn-floating btn-large scale-transition'>Like</button>
+                <button id="scale-demo" href="#!"  class= 'dislike btn-floating btn-large scale-transition red '>Dislike</button>
             </div>
             {{/each}}
              </script>
     <script id='templateseg' type='text/x-handlebars-template'>
                 {{#each data}}
-              <div class= 'searchMovie'>
+              <div class= 'searchMovie1'>
                     <p class= "movieId">{{id}}</p>
                     <h2 class='name'>{{name}}</h2>
                     <img class="image" src="{{img}}">
@@ -66,12 +68,12 @@
                         </div>
                     <br><br>
                     <button id="scale-demo" href="#!"  class= 'like btn-floating btn-large scale-transition'>Like</button>
-                    <button id="scale-demo" href="#!"  class= 'dislike btn-floating btn-large scale-transition scale-out'>Dislike</button>
+                    <button id="scale-demo" href="#!"  class= 'dislike btn-floating btn-large scale-transition red '>Dislike</button>
                 </div>
                 {{/each}}
                  </script>
 
-    <div id="trendingContainer">
+    <div id="trendingContainer" >
         
     </div>
     <div id="suggestionContainer">

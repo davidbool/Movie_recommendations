@@ -9,7 +9,7 @@ body {
 
 #trendingContainer {
     display: grid;
-    float: left;
+   float: left; 
     padding: 2px;
     margin: 20px;
     border: 3px rgb(122, 61, 4);
@@ -32,6 +32,15 @@ body {
     text-align: center;
     position: relative;
 }
+.searchMovie1 {
+    font-family: "Courier New", Courier, monospace;
+    border-radius: 15px;
+    border-color: black;
+    border-style: solid;
+    position: relative;
+    background:blue;
+}
+
 
 .searchMovie {
     font-family: "Courier New", Courier, monospace;
