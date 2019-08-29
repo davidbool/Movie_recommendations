@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-mongoose.connect( 'mongodb://localhost:27017/UserDB', { useNewUrlParser: true } )
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/UserDB', { useNewUrlParser: true } )
 
 
 
@@ -17,11 +17,3 @@ const User = mongoose.model("User", UserSchema)
 
 module.exports = User
 
-// const u1 = new User({
-//     name: "david",
-//     password: "david",
-//     apiKey: "skcbsjkc",
-//     movies: [],
-//     recommendedMovies: []
-// })
-// u1.save()
