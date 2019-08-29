@@ -8,7 +8,9 @@ app.use( express.static( path.join( __dirname, 'dist' ) ) )
 const api = require( './api' )
 const User = require('./modules/User')
 app.use( '/', api )
-
+app.get('*', function (request, response){
+    response.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+});
 
 
 
